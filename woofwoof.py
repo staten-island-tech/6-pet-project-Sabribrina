@@ -41,7 +41,7 @@ Yaotose_Hinako = Hero("Yaotose Hinako", 500, ["Yashiro Miko"])
 Yaotose_Hinako.buy({"title": "Oumi Shiori (Mermaid)", "atk": 999999})
 print(Yaotose_Hinako.__dict__) """
 
-class Pet:
+""" class Pet:
     def __init__ (self, pet_name, happiness):
         self.pet_name = pet_name
         self.__happiness = happiness
@@ -52,32 +52,23 @@ class Pet:
 
 Woof = Pet("Woof", 0)
 Woof.play(play = 10)
-print(Woof.__dict__)
+print(Woof.__dict__) """
 
 class Hero:
-    def __init__ (self, name, money, inventory):
+    def __init__ (self, name, money, inventory, spend):
         self.name = name
-        self.__money = money
+        self._money = money
         self.inventory = inventory
-
-    def buy (self, item, spend, cost):
         self.spend = spend
-        self.cost = cost
+
+    def cost (self, cost):
+        self._money -= int(cost)
+        
+    def buy (self, item):
         self.inventory.append(item)
         print(self.inventory)
 
-class BankAccount:
-    def __init__(self, owner, balance):
-        self.owner = owner
-        self.__balance = balance      # double underscore means "private"
-        
-    def deposit(self, amount):
-        self.__balance += amount
-    
-    def show_balance(self):
-        print(f"{self.owner} has ${self.__balance}")
-
 Yaotose_Hinako = Hero("Yaotose Hinako", 500, ["Yashiro Miko"])
-Yaotose_Hinako.spend(self.__money - 'cost')
+Yaotose_Hinako.spend(cost = 100)
 Yaotose_Hinako.buy({"title": "Oumi Shiori (Mermaid)", "atk": 999999, "cost": 100})
 print(Yaotose_Hinako.__dict__)
