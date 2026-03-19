@@ -55,20 +55,19 @@ Woof.play(play = 10)
 print(Woof.__dict__) """
 
 class Hero:
-    def __init__ (self, name, money, inventory, spend):
+    def __init__ (self, name, money, inventory):
         self.name = name
-        self._money = money
+        self.__money = money
         self.inventory = inventory
-        self.spend = spend
 
     def cost (self, cost):
-        self._money -= int(cost)
+        self.__money -= int(cost)
         
     def buy (self, item):
         self.inventory.append(item)
         print(self.inventory)
 
 Yaotose_Hinako = Hero("Yaotose Hinako", 500, ["Yashiro Miko"])
-Yaotose_Hinako.spend(cost = 100)
-Yaotose_Hinako.buy({"title": "Oumi Shiori (Mermaid)", "atk": 999999, "cost": 100})
+Yaotose_Hinako.buy({"title": "Oumi Shiori (Mermaid)", "atk": 999999})
+Yaotose_Hinako.cost(cost = 100)
 print(Yaotose_Hinako.__dict__)
