@@ -72,7 +72,7 @@ Yaotose_Hinako.buy({"title": "Oumi Shiori (Mermaid)", "atk": 999999})
 Yaotose_Hinako.cost(cost = 100)
 print(Yaotose_Hinako.__dict__) """
 
-class User:
+""" class User:
     def __init__ (self, name, email):
         self.name = name
         self.email = email
@@ -119,4 +119,20 @@ print(student.display_info())  # Output: Student: Sebastian, Email: sebby@yuri.c
 print(teacher.display_info())  # Output: Teacher: Mrs. Annika, Email: ann@yuri.com, Subject: Mathematics
 print(my_teacher.display_info())  # Output: User: Mr. Brown, Email: brown@example.com, Subject: Science
 print(administrator.display_info())  # Output: Administrator: Mr. V, Email: vex@yuri.com, Role: Principal
-print(admin.manage_system())  # Output: Ms. Johnson (Principal) is managing the system.
+print(admin.manage_system())  # Output: Ms. Johnson (Principal) is managing the system. """
+
+#You will be designing an application to allow users to play with a new “pet”. Think Tamgaotchi. You may use whatever lore or character style you want.
+#Users will be able to create a new pet based on Python classes. After instantiating a new pet they will be able to play and care for the pet. Values for the pet should be displayed and updated. See in class example.
+
+class Pet:
+    def __init__ (self, pet_name, happiness):
+        self.pet_name = pet_name
+        self.__happiness = happiness
+    def play (self, play):
+        self.__happiness += int(play)
+    def show_status (self):
+        print(f"{self.pet_name} and {self.__happiness}")
+
+SAM = Pet("Soapie MAKadamia", 0)
+SAM.play(play = 10)
+print(SAM.__dict__)
