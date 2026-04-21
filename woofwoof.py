@@ -125,14 +125,59 @@ print(admin.manage_system())  # Output: Ms. Johnson (Principal) is managing the 
 #Users will be able to create a new pet based on Python classes. After instantiating a new pet they will be able to play and care for the pet. Values for the pet should be displayed and updated. See in class example.
 
 class Pet:
-    def __init__ (self, pet_name, happiness):
+    def __init__ (self, pet_name, happiness = 50, hunger = 50, cleanliness = 50, living = True):
         self.pet_name = pet_name
-        self.__happiness = happiness
-    def play (self, play):
-        self.__happiness += int(play)
-    def show_status (self):
-        print(f"{self.pet_name} and {self.__happiness}")
+        self.happiness = happiness
+        self.hunger = hunger
+        self.cleanliness = cleanliness
+        self.living = living
 
-SAM = Pet("Soapie MAKadamia", 0)
-SAM.play(play = 10)
+    def statDec(self):
+        self.happiness -= 15
+        self.hunger -= 15
+        self.cleanliness -= 15
+
+    def warnings (self):
+        if self.happiness <= 20:
+            print(f"{self.pet_name} is very NOT happy w u cuz ur badddd")
+        if self.hunger <= 20:
+            print(f"{self.pet_name} is going to starve :(")
+        if self.cleanliness <= 20:
+            print(f"{self.pet_name} is very stinky like u")
+        if self.happiness >= 40:
+            print(f"{self.pet_name} is soooooooooooooooo happyyughhh")
+        if self.hunger >= 40:
+            print(f"{self.pet_name} is fullllllll yeahhhh...")
+        if self.cleanliness >= 40:
+            print(f"{self.pet_name} is surprisingly not smelly today??")
+
+    def show_status (self):
+        print(f"{self.pet_name} and {self.happiness} and {self.hunger} and {self.cleanliness}")
+
+print("HIYA!! Do u want to take care of an ANIMAL forever bc its immortal?")
+Userinput = input("name IT")
+petOne = Pet(Userinput)
+
+while petOne.living == True:
+    Userinput = input("what do u want to do now? clean it, play with it, or perhaps feed it some raw human flesh?")
+    Userinput = Userinput.lower()
+    if 'clean' in Userinput:
+        petOne.cleanliness += 25
+        petOne.happiness -= 5
+        print(f"{petOne} is nice and clean!! hurrahhh! although it is not very enjoyable")
+        petOne.statDec()
+    elif 'play' in Userinput:
+        petOne.happiness += 25
+        petOne.cleanliness -= 5
+        print(f"{petOne} is extremely joyful!! woohooo, wont be long before thats over...")
+        petOne.statDec()
+    elif 'feed' in Userinput:
+        petOne.hunger += 25
+        petOne.happiness += 5
+        petOne.cleanliness -= 5
+        print(f"you would feed {petOne} raw human flesh..? at least they seem to enjoy it...")
+        petOne.statDec()
+    
+
+SAM = Pet("Soapie MAKadamia")
 print(SAM.__dict__)
