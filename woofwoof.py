@@ -132,31 +132,36 @@ class Pet:
         self.cleanliness = cleanliness
         self.living = living
 
-    def statDec(self):
+    def statDec (self):
         self.happiness -= 15
         self.hunger -= 15
         self.cleanliness -= 15
 
     def warnings (self):
         if self.happiness <= 20:
-            print(f"{self.pet_name} is very NOT happy w u cuz ur badddd")
+            print(f"{self.pet_name} is very NOT happy w u cuz ur badddd 😾")
         if self.hunger <= 20:
-            print(f"{self.pet_name} is going to starve :(")
+            print(f"{self.pet_name} is going to starve 😿")
         if self.cleanliness <= 20:
-            print(f"{self.pet_name} is very stinky like u")
+            print(f"{self.pet_name} is very stinky like u 💩")
         if self.happiness >= 40:
-            print(f"{self.pet_name} is soooooooooooooooo happyyughhh")
+            print(f"{self.pet_name} is soooooooooooooooo happyyughhh 😸")
         if self.hunger >= 40:
-            print(f"{self.pet_name} is fullllllll yeahhhh...")
+            print(f"{self.pet_name} is fullllllll yeahhhh... 🤗")
         if self.cleanliness >= 40:
-            print(f"{self.pet_name} is surprisingly not smelly today??")
+            print(f"{self.pet_name} is surprisingly not smelly today?? 🫢")
 
-    def show_status (self):
-        print(f"{self.pet_name} and {self.happiness} and {self.hunger} and {self.cleanliness}")
+    def max (self):
+        if self.happiness > 50:
+            self.happiness = 50
+        if self.hunger > 50:
+            self.hunger = 50
+        if self.cleanliness > 50:
+            self.cleanliness = 50
 
-print("HIYA!! Do u want to take care of an ANIMAL forever bc its immortal?")
-Userinput = input("name IT")
-petOne = Pet(Userinput)
+print("HIYA!! Do u want to take care of an ANIMAL forever bc its immortal? or is it...?")
+name = input("name IT")
+petOne = Pet(name)
 
 while petOne.living == True:
     Userinput = input("what do u want to do now? clean it, play with it, or perhaps feed it some raw human flesh?")
@@ -164,20 +169,37 @@ while petOne.living == True:
     if 'clean' in Userinput:
         petOne.cleanliness += 25
         petOne.happiness -= 5
-        print(f"{petOne} is nice and clean!! hurrahhh! although it is not very enjoyable")
+        print(f"{name} is nice and clean!! hurrahhh! although it is not very enjoyable")
         petOne.statDec()
+        petOne.warnings()
+        petOne.max()
+        print(f"{name} has {petOne.happiness} happiness")
+        print(f"{name} has {petOne.hunger} hunger")
+        print(f"{name} has {petOne.cleanliness} hygeine")
     elif 'play' in Userinput:
         petOne.happiness += 25
         petOne.cleanliness -= 5
         print(f"{petOne} is extremely joyful!! woohooo, wont be long before thats over...")
         petOne.statDec()
+        petOne.warnings()
+        petOne.max()
+        print(f"{name} has {petOne.happiness} happiness")
+        print(f"{name} has {petOne.hunger} hunger")
+        print(f"{name} has {petOne.cleanliness} hygeine")
     elif 'feed' in Userinput:
         petOne.hunger += 25
         petOne.happiness += 5
         petOne.cleanliness -= 5
-        print(f"you would feed {petOne} raw human flesh..? at least they seem to enjoy it...")
+        print(f"you would feed {name} raw human flesh..? at least they seem to enjoy it...")
         petOne.statDec()
-    
-
-SAM = Pet("Soapie MAKadamia")
-print(SAM.__dict__)
+        petOne.warnings()
+        petOne.max()
+        print(f"{name} has {petOne.happiness} happiness")
+        print(f"{name} has {petOne.hunger} hunger")
+        print(f"{name} has {petOne.cleanliness} hygeine")
+    elif 'ignore' in Userinput:
+        petOne.happiness -= 50
+        petOne.cleanliness -= 50
+        petOne.hunger -= 50
+        print(f"{name} died 🙀, ur lwk such a cool and amazing owner")
+        break
